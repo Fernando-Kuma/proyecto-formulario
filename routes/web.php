@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Mensaje;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -20,7 +21,8 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function () {
-    return view('home');
+    $mensaje = new Mensaje();
+    return view('home', compact('mensaje'));
 });
 
 Auth::routes();
@@ -36,11 +38,12 @@ Route::group(['namespace' => 'App\Http\Controllers', 'prefix' => 'admin', 'middl
     Route::resource('formulario', FormularioController::class);
     Route::resource('contenido', ContenidoController::class);
     Route::resource('roles', RolController::class);
+    Route::resource('mensaje', MensajeController::class);
 });
 Route::resource('/form/{id}/{empresa}/{evento}', App\Http\Controllers\FormController::class);
+Route::resource('message', App\Http\Controllers\MensajeController::class);
 
 Route::group(['prefix' => 'img'], function () {
-
     Route::get('email-fondo', function () { return response()->file('img/email/image1.jpg');});
     Route::get('email-icono1', function () { return response()->file('img/email/ico_facebook.jpg');});
     Route::get('email-icono2', function () { return response()->file('img/email/ico_linkedin.jpg');});

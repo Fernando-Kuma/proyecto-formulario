@@ -68,7 +68,7 @@
                             <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
                         </span>
                         <h4 class="my-3">Responsivo</h4>
-                        <p class="text-muted">La aplicacion esta determinada para tener una vista como en celular como en computador</p>
+                        <p class="text-muted">La aplicación está determinada a tener una vista tanto en móvil como en ordenador</p>
                     </div>
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
@@ -76,7 +76,7 @@
                             <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
                         </span>
                         <h4 class="my-3">Seguridad</h4>
-                        <p class="text-muted">Se cuenta con la seguridad que la informacion guardad no tendra fuga de informacion</p>
+                        <p class="text-muted">Se asegura que la información almacenada no se filtrará información</p>
                     </div>
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
@@ -103,7 +103,7 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="assets/img/portfolio/1.jpg" alt="..." />
+                                <img class="img-fluid" src="img/captura.png" alt="..." />
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Threads</div>
@@ -152,11 +152,11 @@
                             <div class="col-lg-8">
                                 <div class="modal-body">
                                     <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/1.jpg" alt="..." />
+                                    <h2 class="text-uppercase">Proyecto</h2>
+                                    <img class="img-fluid d-block mx-auto"  src="img/captura.png" alt="..." />
                                     <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
                                         <i class="fas fa-xmark me-1"></i>
-                                        Close Project
+                                        Cerrar
                                     </button>
                                 </div>
                             </div>
@@ -218,31 +218,24 @@
                     <h2 class="section-heading text-uppercase">Contactame</h2>
                     <h3 class="section-subheading text-muted">Puedes enviar un mensaje, te respondare lo mas rapido posible</h3>
                 </div>
-                <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                <form id="contactoFormulario" method="POST" action="{{ route('message.store') }}" data-sb-form-api-token="API_TOKEN">
+                    @csrf
                     <div class="row align-items-stretch mb-5">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <!-- Name input-->
-                                <input class="form-control" id="name" type="text" placeholder="Your Name *" data-sb-validations="required" />
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                                <input class="form-control" name="nombre" id="nombre" type="text" placeholder="Nombre *" data-sb-validations="required" />
                             </div>
                             <div class="form-group">
                                 <!-- Email address input-->
-                                <input class="form-control" id="email" type="email" placeholder="Your Email *" data-sb-validations="required,email" />
-                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                            </div>
-                            <div class="form-group mb-md-0">
-                                <!-- Phone number input-->
-                                <input class="form-control" id="phone" type="tel" placeholder="Your Phone *" data-sb-validations="required" />
-                                <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                                <input class="form-control" name="correo" id="correo" type="email" placeholder="Correo *" data-sb-validations="required,email" />
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group form-group-textarea mb-md-0">
+                            <div class="form-group form-group-textarea mb-md-0" style="height: auto !important;">
                                 <!-- Message input-->
-                                <textarea class="form-control" id="message" placeholder="Your Message *" data-sb-validations="required"></textarea>
-                                <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                                <input type="hidden" class="form-control" id="paginacion" name="paginacion" value="usuario">
+                                <textarea class="form-control" name="mensaje" id="mensaje" placeholder="Mensaje *" data-sb-validations="required"></textarea>
                             </div>
                         </div>
                     </div>
@@ -250,12 +243,10 @@
                     <!---->
                     <!-- This is what your users will see when the form-->
                     <!-- has successfully submitted-->
+                    
                     <div class="d-none" id="submitSuccessMessage">
                         <div class="text-center text-white mb-3">
-                            <div class="fw-bolder">Form submission successful!</div>
-                            To activate this form, sign up at
-                            <br />
-                            <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                            <div class="fw-bolder">Mensaje enviado!</div>
                         </div>
                     </div>
                     <!-- Submit error message-->
@@ -264,7 +255,7 @@
                     <!-- an error submitting the form-->
                     <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                     <!-- Submit Button-->
-                    <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton" type="submit">Send Message</button></div>
+                    <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase" id="" type="submit">Enviar mensaje</button></div>
                 </form>
             </div>
         </section>

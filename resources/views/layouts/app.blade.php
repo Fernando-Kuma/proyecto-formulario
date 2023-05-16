@@ -116,6 +116,11 @@
                                     Perfil
                                 </a>
                                 <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ route('mensaje.create') }}">
+                                    <i class="fas fa-commenting fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Enviar mensaje
+                                </a>
+                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Cerrar sesión
